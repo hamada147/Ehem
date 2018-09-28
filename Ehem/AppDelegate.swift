@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Ehem
 //
-//  Created by Ahmed Moussa on 9/28/18.
+//  Created by Ahmed Moussa on 9/16/18.
 //  Copyright © 2018 Moussa Tech. All rights reserved.
 //
 
@@ -17,7 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = self.getNavController()
+        window!.makeKeyAndVisible()
+        // for testing
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
         return true
+    }
+    
+    private func getNavController() -> UINavigationController {
+        let nav = UINavigationController(rootViewController: MainViewController())
+        nav.view.backgroundColor = UIColor.white
+        return nav
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
